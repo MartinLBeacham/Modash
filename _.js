@@ -90,6 +90,30 @@ const _ = {
   baseInRange(number, start = 0, end) {
     return number >= start && number < end ? true : false;
   },
+
+  words(string, pattern) {
+    if (typeof string !== "string") {
+      console.log("Please enter string values for string.");
+      return undefined;
+    }
+
+    if (pattern !== undefined && typeof pattern !== "string") {
+      console.log("Please enter string values for pattern.");
+      return undefined;
+    }
+
+    const regExInput = pattern === undefined ? undefined : new RegExp(pattern);
+
+    return this.baseWords(string, regExInput);
+  },
+
+  baseWords(string, pattern) {
+    if (pattern === undefined) {
+      return string.split(" ");
+    } else {
+      return string.split(pattern);
+    }
+  },
 };
 
 // Exporting _ object.
