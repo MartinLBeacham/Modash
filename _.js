@@ -3,21 +3,15 @@ _ object contains the module's functions.
 Methods whose names start with 'base' contain the functional logic.
 Methods without 'base' contain the user input handling logic.
 */
+
 const _ = {
   /*
-  Input handler function.  Checks to see if start was specified and assigns proper values to start and end accordingly.
-  Calls trueClamp for functional code.
-  */
-  clamp(number, start, end) {
-    if (start === undefined) {
-      console.log("Please enter a number for end");
-      return undefined;
-    }
-    /*
-    Handles when only two arguments are entered.
-    Where the second argument is negative, it assumes the user intended to clamp between 0 and the negative number.
+    Handles when only two arguments are entered for functions that handle ranges.
+    Where the second argument is negative, it assumes the user intended a range between 0 and the negative number.
     To do so, start stays as the negative number and end assigned zero.
-    */
+    Also switches start and end where start > end
+  */
+  rangeFunctionArgSwitch(start, end) {
     if (end === undefined) {
       if (start < 0) {
         end = 0;
@@ -25,12 +19,30 @@ const _ = {
         end = start;
         start = 0;
       }
+    } else if (end < start) {
+      let temp = end;
+      end = start;
+      start = temp;
     }
+    return [start, end];
+  },
 
+  /*
+  Input handler function for clamp.  Checks to see if start was specified and assigns proper values to start and end accordingly.
+  Calls trueClamp for functional code.
+  */
+  clamp(number, start, end) {
     if (typeof number !== "number") {
       console.log("Please enter a number.");
       return undefined;
     }
+
+    if (start === undefined) {
+      console.log("Please enter a number for end");
+      return undefined;
+    }
+
+    [start, end] = this.rangeFunctionArgSwitch(start, end);
 
     return this.baseClamp(number, start, end);
   },
@@ -48,6 +60,35 @@ const _ = {
     } else {
       return start;
     }
+  },
+
+  /*
+  Input handler function for inRange.  Checks to see if start was specified and assigns proper values to start and end accordingly.
+  Calls baseInRange for functional code.
+  */
+  inRange(number, start, end) {
+    if (typeof number !== "number") {
+      console.log("Please enter a number.");
+      return undefined;
+    }
+
+    if (start === undefined) {
+      console.log("Please enter a number for end");
+      return undefined;
+    }
+
+    [start, end] = this.rangeFunctionArgSwitch(start, end);
+
+    if (start === end) {
+      console.log("start and end cannot be the same value!");
+      return undefined;
+    }
+
+    return this.baseInRange(number, start, end);
+  },
+
+  baseInRange(number, start = 0, end) {
+    return number >= start && number < end ? true : false;
   },
 };
 
