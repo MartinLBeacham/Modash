@@ -86,11 +86,18 @@ const _ = {
 
     return this.baseInRange(number, start, end);
   },
-
+  /*
+  Functional code for inRange function.
+  Checks to see whether number is within range specified.
+  */
   baseInRange(number, start = 0, end) {
     return number >= start && number < end ? true : false;
   },
-
+  /*
+  Input handler function for words.  Checks to see if arguments were specified and are of the correct type.
+  Generates RegEx pattern for functional code.
+  Calls baseWords for functional code.
+  */
   words(string, pattern) {
     if (typeof string !== "string") {
       console.log("Please enter string values for string.");
@@ -106,7 +113,10 @@ const _ = {
 
     return this.baseWords(string, regExInput);
   },
-
+  /*
+  Functional code for words function.
+  Breaks up a string into an array, based on a separator provided.
+  */
   baseWords(string, pattern) {
     if (pattern === undefined) {
       return string.split(" ");
@@ -114,7 +124,11 @@ const _ = {
       return string.split(pattern);
     }
   },
-
+  /*
+  Input handler function for pad.  Checks to see if string was specified and
+  that arguments are of the correct type.
+  Calls basePad for functional code.
+  */
   pad(string, length = 0, chars = " ") {
     if (string === undefined) {
       return "";
@@ -133,7 +147,11 @@ const _ = {
 
     return this.basePad(string, length, chars);
   },
-
+  /*
+  Functional code for pad function.
+  If the provided string is less than the provided length, then it pads it evenly on both sides
+  with the provided padding chars, if it cannot pad evenly, the right side is favored.
+  */
   basePad(string, length, chars) {
     let originalLength = string.length;
 
@@ -160,7 +178,10 @@ const _ = {
 
     return leftPadding + string + rightPadding;
   },
-
+ /*
+  Input handler function for has.  Checks to see if arguments are of the correct type.
+  Calls baseHas for functional code.
+  */
   has(object, path) {
     if (typeof path === 'string') {
       path = path.split('.');
@@ -171,7 +192,10 @@ const _ = {
 
     return this.baseHas(object, path);
   },
-
+  /*
+  Functional code for has function.
+  Looks through a nested object to determine whether the provided path exists in that object.
+  */
   baseHas(object, path) {
 
     if (Object.hasOwn(object, path[0])) {
@@ -186,6 +210,30 @@ const _ = {
     else {
       return false;
     }
+  },
+ /*
+  Input handler function for invert.  Checks to see if arguments are of the correct type.
+  Calls baseInvert for functional code.
+  */
+  invert(object){
+    if(typeof object !== 'object'){
+      console.log("The argument for object must be an Object!")
+      return object
+    }
+    return this.baseInvert(object);
+  },
+  /*
+  Functional code for invert function.
+  Inverts the key:value pairs so that the value is the key and the key is the value.
+  key:value --> value:key
+  */
+  baseInvert(object){
+
+    returnObject={};
+    for(key in object){
+      returnObject[object[key]]=key;
+    }
+    return returnObject;
   },
 
 };
