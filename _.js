@@ -160,7 +160,35 @@ const _ = {
 
     return leftPadding + string + rightPadding;
   },
+
+  has(object, path) {
+    if (typeof path === 'string') {
+      path = path.split('.');
+    }
+
+    return this.baseHas(object, path);
+  },
+
+  baseHas(object, path) {
+
+    if (Object.hasOwn(object, path[0])) {
+      
+      if (path.length === 1) {
+        return true;
+      } else {
+        object = object[path[0]];
+        path.shift();
+        console.log(object, path);
+        return this.baseHas(object, path);
+      }
+    }
+    else {
+      return false;
+    }
+  },
+
 };
+
 
 // Exporting _ object.
 module.exports = _;
