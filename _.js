@@ -164,6 +164,9 @@ const _ = {
   has(object, path) {
     if (typeof path === 'string') {
       path = path.split('.');
+    }else if(!Array.isArray(path)){
+      console.log("Path must be an array or string.")
+      return undefined
     }
 
     return this.baseHas(object, path);
@@ -177,9 +180,7 @@ const _ = {
         return true;
       } else {
         object = object[path[0]];
-        path.shift();
-        console.log(object, path);
-        return this.baseHas(object, path);
+        return this.baseHas(object, path.slice(1,path.length));
       }
     }
     else {
@@ -188,7 +189,6 @@ const _ = {
   },
 
 };
-
 
 // Exporting _ object.
 module.exports = _;
