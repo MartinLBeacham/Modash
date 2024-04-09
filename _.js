@@ -245,22 +245,16 @@ const _ = {
   */
   baseFindKey(object, predicate) {
     if (typeof predicate === "function") {
+      //if predicate is a callback function
       for (key in object) {
         if (predicate(object[key])) {
-  baseFindKey(object, predicate){
-
-    if(typeof predicate === 'function'){ //if predicate is a callback function
-      for(key in object){
-        if(predicate(object[key])){
           return key;
         }
       }
     } else {
+      //if predicate is an array
       for (key in object) {
         if (object[key][predicate[0]] === predicate[1]) {
-    }else{ //if predicate is an array
-      for(key in object){
-        if(object[key][predicate[0]]===predicate[1]){
           return key;
         }
       }
