@@ -251,13 +251,13 @@ const _ = {
   */
   baseFindKey(object, predicate){
 
-    if(typeof predicate === 'function'){
+    if(typeof predicate === 'function'){ //if predicate is a callback function
       for(key in object){
         if(predicate(object[key])){
           return key;
         }     
       }
-    }else{
+    }else{ //if predicate is an array
       for(key in object){
         if(object[key][predicate[0]]===predicate[1]){
           return key;
@@ -270,5 +270,5 @@ const _ = {
 
 };
 
-// Exporting _ object.
+// Exporting _ wrapper object.
 module.exports = _;
