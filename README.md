@@ -1,9 +1,8 @@
-
 # Modash
 
 ## Overview
 
-**Description**: My personal version of lodash-like functions and other functions I found useful.
+**Description**: <p>My personal version of lodash-like functions and other functions I found useful.</p>
 
 ## Modular Functions
 
@@ -13,12 +12,12 @@
 4. has.js
 5. inRange.js
 6. invert.js
-7. rangeFunctionArgSwitch.js -- helper function for other modules in pack
+7. pad.js
+8. word.js
+9. rangeFunctionArgSwitch.js
 
 ## How to Use
 
-*Modularizing functions is still a WIP.*
-
-Process for importing using Node:
+### Process for importing using Node:
 
 &nbsp;&nbsp;&nbsp;&nbsp;`require("Modash");`
