@@ -1,13 +1,8 @@
-const _ = require("./_.js");
+//const _ = require("./_.js");
 
-let users = {
-  meetu: { salary: 36000, active: true },
-  teetu: { salary: 40000, active: false },
-  seetu: { salary: 10000, active: true },
-};
+const inRange = require("./modules/inRange.js");
+console.log("should be true;", inRange(3, 2, 4));
 
-console.log(
-  _.findKey(users, function (o) {
-    return o.salary < 40000;
-  }),
-);
+console.log("should be true;", inRange(4, 8));
+
+console.log("should be false;", inRange(4, 2));
