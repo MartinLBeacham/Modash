@@ -36,7 +36,7 @@ async function base_fetchAPI(
     const response = await fetch(urlToFetch, {
       method: "GET", // "POST" does not work
       cache: "no-cache",
-      headers: headers ?? { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json" },
     });
     if (response.ok) {
       return response;
