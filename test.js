@@ -2,8 +2,8 @@
 
 const _ = require("./modules/Modash.js");
 
-console.log("should be true;", inRange(3, 2, 4));
+console.log("should be true;", _.inRange(3, 2, 4));
 
-console.log("should be true;", inRange(4, 8));
+console.log("should be true;", _.inRange(4, 8));
 
-console.log("should be false;", inRange(4, 2));
+console.log("should be false;", _.inRange(4, 2));
