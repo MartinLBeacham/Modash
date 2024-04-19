@@ -51,4 +51,4 @@ This project was written 100% in JavaScript and designed for use in the Node run
 
 ## License
 
-This package is subject to the [GNU General Public License v3.0](https://raw.githubusercontent.com/MartinLBeacham/Modash/main/LICENSE).
+This package is subject to the [GNU General Public License v3.0](https://raw.githubusercontent.com/MartinLBeacham/Modash/main/LICENSE).  Please review that license prior to using Modash.
